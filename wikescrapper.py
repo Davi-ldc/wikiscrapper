@@ -20,6 +20,7 @@ def get_title(page_name):
     title = page.title
     return title
 
+
 def get_page_content(page_name):
     """pega os dados de uma pagina especifica e retorna o seu conteudo"""
     page = wikipedia.page(page_name)
@@ -62,8 +63,7 @@ def get_references(page_name):
 def main():
     query = str(input('Digite uma palavra para buscar na wiki: '))
     list_of_possible_pages = search_on_wiki(query=query)
-
-    if list_of_possible_pages == None:
+    if list_of_possible_pages == None or list_of_possible_pages == []:
         print(f"não encontrei nenhuma pagina relacionada a {query}")
         sys.exit(1)
 
@@ -80,7 +80,9 @@ def main():
         Referencias: {get_references(list_of_possible_pages[0])}
         
         O link da pagina é {get_link(list_of_possible_pages[0])}
-        Id {get_page_id(list_of_possible_pages[0])}""")
+        Id {get_page_id(list_of_possible_pages[0])}
+        
+        Esses foram os possiveis resultados que achei{list_of_possible_pages}""")
 
 
 if __name__ == '__main__':
