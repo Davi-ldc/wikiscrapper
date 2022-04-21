@@ -86,4 +86,10 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    try:
+        main()
+    except wikipedia.exceptions.DisambiguationError as e:
+        print("n achei nada relacionado a sua pesquisa")
+        print(f"Seu resultado pode se referir a: {str(e.options)}")
+
+
